@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ItemLanguage } from "../ItemLanguage"
 import styled from 'styled-components'
 
@@ -40,9 +40,14 @@ interface PropsTypesListItem extends PropsTypesDropdown {
 }
 
 export const ListItems: React.FC<PropsTypesListItem> = ({ arrLanguage, selectedItems, setItems, deleteItem }) => {
-
     const [searchText, setText] = useState<string>('')
-    const matchItems = arrLanguage.filter(s => s.name.toLowerCase().includes(searchText.toLowerCase()))
+    const [matchItems, setMatchItems] = useState<ItemLanguageTypes[]>([])
+
+    useEffect(() => {
+        const match = arrLanguage.filter(s => s.name.toLowerCase().includes(searchText.toLowerCase()))
+        setMatchItems(match)
+    }, [searchText, arrLanguage])
+    
 
     return (
         <Div>

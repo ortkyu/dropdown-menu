@@ -1,5 +1,6 @@
 import { ItemLanguageTypes, PropsTypesDropdown } from "./Dropdown/ListItems"
 import styled from 'styled-components'
+import { useEffect } from "react"
 
 const DIVWRAP = styled.div`
  display: flex;
@@ -46,7 +47,7 @@ export const ItemLanguage: React.FC<PropsTypesItem> = ({
       deleteItem(item)
     }
   }
-  const border = arrLanguage[arrLanguage.length - 1].name === item ? { border: "none" } : { border: "1px solid #F4F4F4" }
+  const border = arrLanguage[arrLanguage.length - 1].name === item ? { borderBottom: "none" } : { borderBottom: "1px solid #F4F4F4" }
   return (
     <DIVWRAP style={border}>
       <IMG src={iconLanguage} alt='' />
