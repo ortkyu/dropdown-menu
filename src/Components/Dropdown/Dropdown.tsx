@@ -41,9 +41,9 @@ const OPENICON = styled.span`
 
 export const Dropdown = () => {
     const [selectedItems, setItems] = useState<string[]>([])
-    const arrLanguage = [  //иконки не все у вас
-        { id: 1, name: "Русский", icon: '/Icons/italy.png' }, { id: 2, name: "Английский", icon: '/Icons/italy.png' },
-        { id: 3, name: "Испанский", icon: '/Icons/spain.png' }, { id: 4, name: "Немецкий", icon: '/Icons/italy.png' },
+    const arrLanguage = [  
+        { id: 1, name: "Русский", icon: '/Icons/russiaflag_flags_rusi_8884.png' }, { id: 2, name: "Английский", icon: '/Icons/United-kingdom_29738.png' },
+        { id: 3, name: "Испанский", icon: '/Icons/spain.png' }, { id: 4, name: "Немецкий", icon: '/Icons/Germany_29761.png' },
         { id: 5, name: "Итальянский", icon: '/Icons/italy.png' }, { id: 6, name: "Польский", icon: '/Icons/poland.png' }
     ]
     const [openList, setOpen] = useState<boolean>(false)
