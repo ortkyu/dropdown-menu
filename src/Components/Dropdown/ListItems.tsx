@@ -3,41 +3,64 @@ import { ItemLanguage } from "../ItemLanguage"
 import styled from 'styled-components'
 
 const Div = styled.div`
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  padding: 0.25em 1em;
+
+  box-shadow: 0px 4px 32px rgba(51, 51, 51, 0.15);;
+  border-radius: 10px;
   width: 400px;
+  box-sizing: border-box;
 `
+const INPUT = styled.input`
+  height: 40px;
+  width: 368px;
+  background: #F4F4F4;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin: 16px 16px 0px 16px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  ::placeholder {
+    background: url('/Icons/icon.svg') no-repeat;
+    padding-left: 20px;
+  }
+`
+
 export interface PropsTypesDropdown {
     selectedItems: string[]
     setItems: React.Dispatch<React.SetStateAction<string[]>>
     deleteItem: (arg: string) => void
 }
-
- interface PropsTypesListItem extends PropsTypesDropdown  {
-    arrLanguach: string[]
+export interface ItemLanguageTypes {
+    id: number
+    name: string
+    icon: string
+}
+interface PropsTypesListItem extends PropsTypesDropdown {
+    arrLanguage: ItemLanguageTypes[]
 }
 
-export const ListItems: React.FC<PropsTypesListItem> = ({ arrLanguach, selectedItems, setItems, deleteItem }) => {
+export const ListItems: React.FC<PropsTypesListItem> = ({ arrLanguage, selectedItems, setItems, deleteItem }) => {
 
     const [searchText, setText] = useState<string>('')
-
-    const matchItems = arrLanguach.filter(s => s.includes(searchText))
+    const matchItems = arrLanguage.filter(s => s.name.toLowerCase().includes(searchText.toLowerCase()))
 
     return (
         <Div>
-            <input
+            <INPUT
                 onChange={(e) => setText(e.target.value)}
                 value={searchText}
-                placeholder="Введите запрос..."
+                placeholder="Поиск"
             />
             {matchItems.map((p, i) => (
                 <div key={i}>
                     <ItemLanguage
-                        item={p}
+                        iconLanguage={p.icon}
+                        item={p.name}
                         deleteItem={deleteItem}
                         selectedItems={selectedItems}
-                        setItems={setItems} />
+                        setItems={setItems}
+                        arrLanguage={arrLanguage}
+                    />
                 </div>
             ))}
         </Div>
