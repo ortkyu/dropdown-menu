@@ -1,6 +1,5 @@
-import { ItemLanguageTypes, PropsTypesDropdown } from "./Dropdown/ListItems"
+import { ItemLanguageTypes, PropsTypesDropdown } from "./ListItems"
 import styled from 'styled-components'
-import { useEffect } from "react"
 
 const DIVWRAP = styled.div`
  display: flex;

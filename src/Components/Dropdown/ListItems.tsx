@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ItemLanguage } from "../ItemLanguage"
+import { ItemLanguage } from "./ItemLanguage"
 import styled from 'styled-components'
 
 const Div = styled.div`
