@@ -33,11 +33,12 @@ const Div = styled.div`
 const DivDel = styled.div`
  margin-left: auto;
 `
-const OPENICON = styled.span`
+
+const Openicon = styled.span<{openList: boolean}>`
   margin-left: auto;
   transition: all 0.3s ease-out;
+  transform: ${({openList}) => (openList ?  "rotate(180deg)"  : "rotate(0deg)" )};
 `
-
 
 export const Dropdown = () => {
     const [selectedItems, setItems] = useState<string[]>([])
@@ -50,9 +51,7 @@ export const Dropdown = () => {
     const deleteItem = (item: string) => {
         setItems(selectedItems.filter(i => i !== item))
     }
-
-    const transform = openList ? { transform: "rotate(180deg)" } : { transform: "rotate(0deg)" }
-
+ 
     return (
         <div>
             <DivSearch>
@@ -66,11 +65,11 @@ export const Dropdown = () => {
                         </DivDel>
                     </Div>
                 )}
-                <OPENICON style={transform} onClick={() => setOpen(!openList)}>
+                <Openicon openList={openList} onClick={() => setOpen(!openList)}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.45442 7.19105C4.06285 6.88488 3.49722 6.9541 3.19105 7.34566C2.88488 7.73723 2.9541 8.30286 3.34566 8.60903L7.4423 11.8123C7.76791 12.0669 8.22507 12.067 8.55078 11.8125L12.6507 8.60925C13.0424 8.30323 13.1119 7.73763 12.8059 7.34594C12.4998 6.95426 11.9342 6.88481 11.5425 7.19083L7.99691 9.96101L4.45442 7.19105Z" fill="#333333" />
                     </svg>
-                </OPENICON>
+                </Openicon>
             </DivSearch>
             {openList && <ListItems
                 deleteItem={deleteItem}

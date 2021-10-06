@@ -1,10 +1,12 @@
 import { ItemLanguageTypes, PropsTypesDropdown } from "./ListItems"
 import styled from 'styled-components'
 
-const DIVWRAP = styled.div`
- display: flex;
- padding: 0 16px;
+const Divwrap = styled.div<{ border: boolean }>`
+display: flex;
+padding: 0 16px;
+border-bottom: ${({ border }) => border ? "none" : "1px solid #F4F4F4"};
 `
+
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
@@ -18,7 +20,7 @@ const Div = styled.div`
   margin-left: 10px;
 `
 
-const IMG = styled.img`
+const Img = styled.img`
  margin: auto;
  width: 20px;
  height: 20px;
@@ -46,10 +48,12 @@ export const ItemLanguage: React.FC<PropsTypesItem> = ({
       deleteItem(item)
     }
   }
-  const border = arrLanguage[arrLanguage.length - 1].name === item ? { borderBottom: "none" } : { borderBottom: "1px solid #F4F4F4" }
+
+  const border = arrLanguage[arrLanguage.length - 1].name === item
+
   return (
-    <DIVWRAP style={border}>
-      <IMG src={iconLanguage} alt='' />
+    <Divwrap border={border}>
+      <Img src={iconLanguage} alt='' />
       <Div >
         <label htmlFor={item}>{item}</label>
         <input
@@ -58,6 +62,6 @@ export const ItemLanguage: React.FC<PropsTypesItem> = ({
           id={item}
           checked={selectedItems.includes(item)} />
       </Div>
-    </DIVWRAP>
+    </Divwrap>
   )
 }

@@ -9,7 +9,7 @@ const Div = styled.div`
   width: 400px;
   box-sizing: border-box;
 `
-const INPUT = styled.input`
+const Input = styled.input`
   height: 40px;
   width: 368px;
   background: #F4F4F4;
@@ -46,12 +46,12 @@ export const ListItems: React.FC<PropsTypesListItem> = ({ arrLanguage, selectedI
     useEffect(() => {
         const match = arrLanguage.filter(s => s.name.toLowerCase().includes(searchText.toLowerCase()))
         setMatchItems(match)
-    }, [searchText, arrLanguage])
+    }, [ arrLanguage, searchText])
     
 
     return (
         <Div>
-            <INPUT
+            <Input
                 onChange={(e) => setText(e.target.value)}
                 value={searchText}
                 placeholder="Поиск"
